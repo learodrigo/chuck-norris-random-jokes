@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chuck Norris Jokes machine</title>
+</head>
+<body>
+
+<div id="app">
+    <h1 v-bind:title="title" v-if="Math.random() > 0.5">{{ titleA }}</h1>
+    <h1 v-bind:title="title" v-else>{{ titleB }}</h1>
+
+    <ul>
+        <li v-for="todo in items">
+            {{ todo.text }}
+            <button @click="todo.checked = !todo.checked">Toggle</button>
+            <div v-if="todo.checked">Checked</div>
+
+        </li>
+    </ul>
+
+    <input type="text" v-model="item">
+    <button @click="items.push(item)">Add item</button>
+
+    <br />
+    <input type="number" v-model="price">
+    <div>Tax {{ moneyFormat(tax) }}</div>
+    <div>Total {{ moneyFormat(total) }}</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isLoading: false,
+            item: '',
+            items: [
+                { text: 'item1', checked: true },
+                { text: 'item2', checked: true },
+                { text: 'item3', checked: false }
+            ],
+            menu: 'My menu data here',
+            price: 100,
+            titleA: 'Math.random() > 0.5',
+            titleB: 'Chuck Norris jokes machine',
+            VAT: 0.1
+        },
+
+        methods: {
+            moneyFormat (price) {
+                return '$' + price.toFixed(2)
+            }
+        },
+
+        computed: {
+            tax () { return parseInt(this.price) * this.VAT },
+            total () { return  parseInt(this.price) + this.tax },
+        }
+    })
+</script>
+
+</body>
+</html>
