@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/learodrigo/chuck-norris-random-jokes#readme",
   "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.5",
     "cross-env": "^7.0.3",
     "laravel-mix": "^6.0.11",
     "postcss": "^8.1.14",

@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Chuck Norris Jokes machine</title>
-</head>
-<body>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Chuck Norris Jokes machine</title>
+        <meta name="description" content="Chuck Norris Jokes random machine">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./dist/app.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
+                    href="https://www.mozilla.org/en-US/firefox/new/">upgrade your browser</a> to improve your
+                experience.</p>
+        <![endif]-->
 
-<div id="app">
+        <div id="app">
 
-    <accordion v-for="item in items" :key="item.id" :item="item"></accordion>
+            <items-list></items-list>
+            <br><br>
+            <accordion v-for="item in items" :key="item.id" :item="item"></accordion>
 
-</div>
+        </div>
 
-<script src="./dist/app.js"></script>
-
-</body>
+        <script src="./dist/app.js"></script>
+    </body>
 </html>

@@ -1,10 +1,14 @@
 import Vue from 'vue'
+
+// Components
+import ItemsList from './components/ItemsList'
 import Accordion from './components/Accordion'
 
 new Vue({
     el: '#app',
 
     components: {
+        ItemsList,
         Accordion,
     },
 

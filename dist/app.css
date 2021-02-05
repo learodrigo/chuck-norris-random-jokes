@@ -1,1 +1,15 @@
+* {
+  font-family: monospace;
+}
 
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex.column {
+  flex-direction: column;
+}
