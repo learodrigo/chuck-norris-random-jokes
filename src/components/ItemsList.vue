@@ -1,8 +1,7 @@
 <template>
     <div>
-        <p v-text="dropdownValue"></p>
-
-        <dropdown @update:option="handleChange"></dropdown>
+        <h3>Category</h3>
+        <dropdown @update:option="changeReceived" v-model="dropdownValue" :categories="categories"></dropdown>
     </div>
 </template>
 
@@ -11,6 +10,7 @@
 
     export default {
         name: 'ItemsList',
+        props: ['categories'],
 
         components: {
             Dropdown
@@ -18,13 +18,14 @@
 
         data: () => {
             return {
-                dropdownValue: 'This is the items list components'
+                dropdownValue: '',
             }
         },
 
         methods: {
-            handleChange (value) {
+            changeReceived (value) {
                 this.dropdownValue = value
+                this.$emit('update:option', value)
             },
         }
     }

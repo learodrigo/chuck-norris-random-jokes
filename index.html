@@ -8,6 +8,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Chuck Norris Jokes machine</title>
+        <link href="https://assets.chucknorris.host/img/avatar/chuck-norris.png" rel="icon" type="image/x-icon">
         <meta name="description" content="Chuck Norris Jokes random machine">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./dist/app.css">
@@ -20,10 +21,10 @@
         <![endif]-->
 
         <div id="app">
+            <h1></h1>
 
-            <items-list></items-list>
-            <br><br>
-            <accordion v-for="item in items" :key="item.id" :item="item"></accordion>
+            <joke-holder></joke-holder>
+            <list-container></list-container>
 
         </div>
 
