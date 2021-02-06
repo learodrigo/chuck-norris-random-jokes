@@ -8,7 +8,9 @@
 <script>
     export default {
         name: 'Dropdown',
-        props: ['categories'],
+        props: {
+            categories: Array
+        },
 
         data: () => {
             return {

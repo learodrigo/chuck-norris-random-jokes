@@ -1,7 +1,7 @@
 <template>
     <div class="search-bar">
         <label class="label" for="site-search">Search the site:</label>
-        <input v-on:keyup.enter="handleSubmit" v-model="query" class="input" type="search" id="site-search" name="q" placeholder="Try 'football'... " aria-label="Look for jokes">
+        <input v-on:keyup.enter="handleSubmit" @change="handleChange" v-model="query" class="input" type="search" id="site-search" name="q" placeholder="Try 'football'... " aria-label="Look for jokes">
         <button @click="handleSubmit" class="button">Search</button>
     </div>
 </template>
@@ -12,13 +12,21 @@ export default {
 
     data: () => {
         return {
-            query: ''
+            query: 'all'
         }
     },
 
     methods: {
         handleSubmit () {
-            this.$emit('update:query', this.query)
+            if (this.query.length > 3) {
+                this.$emit('update:query', this.query)
+            }
+        },
+
+        handleChange () {
+            if (this.query.length < 3) {
+                this.query = 'all'
+            }
         }
     }
 }

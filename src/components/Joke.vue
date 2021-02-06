@@ -4,7 +4,7 @@
             <img
                 :src="joke.icon_url"
                 :alt="joke.value"
-                v-bind:class="{'special_card__image' : isBig}">
+                v-bind:class="{'special_card__image' : isBig}"
             />
             <span
                 v-if="joke.categories"
@@ -27,7 +27,10 @@
 <script>
     export default {
         name: 'Joke',
-        props: ['joke', 'isBig'],
+        props: {
+            joke: Object,
+            isBig: Boolean
+        },
 
         data: () => {
             return {
@@ -105,7 +108,8 @@
     margin: 0 auto;
     max-width: 400px;
 
-    .special_card__img {
+    .special_card__image,
+    .special_card__span {
         display: none;
     }
 }

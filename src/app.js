@@ -2,15 +2,11 @@ import Vue from 'vue'
 
 window.axios = require('axios')
 
-// Components
-import ListContainer from './components/ListContainer'
-import JokeHolder from './components/JokeHolder'
+import App from './App.vue'
+import Contact from './components/Contact.vue'
+import Error404 from './components/Error404.vue'
+
 
 new Vue({
-    el: '#app',
-
-    components: {
-        ListContainer,
-        JokeHolder
-    },
-})
+    render: (h) => h(App)
+}).$mount( '#app' )

@@ -1,16 +1,22 @@
 <template>
-    <nav>
+    <nav class="navbar">
         <ul>
-            <li></li>
-            <li></li>
+            <li>
+                <a href="./">Home</a>
+            </li>
+            <li>
+                <a href="./contact">Contact</a>
+            </li>
         </ul>
     </nav>
 </template>
-<script>
-export default {
 
-}
+<script>
+    export default {
+        name: 'NavBar'
+    }
 </script>
+
 <style lang="scss">
 
 </style>

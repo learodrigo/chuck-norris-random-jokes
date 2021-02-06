@@ -1,6 +1,12 @@
 <template>
     <div class="container">
-        <items-list @update:option="valueReceived" @update:query="updateQuery" v-model="selectedOptions" :categories="categories"></items-list>
+        <items-list
+            @update:option="valueReceived"
+            @update:query="updateQuery"
+            v-model="selectedOptions"
+            :categories="categories"
+        >
+        </items-list>
 
         <ul>
             <joke v-for="joke in allJokes.result" :key="joke.id" :joke="joke"></joke>
@@ -60,7 +66,6 @@
             },
 
             updateQuery (q) {
-                console.log(q)
                 this.fetchAllJokes(q)
             },
 

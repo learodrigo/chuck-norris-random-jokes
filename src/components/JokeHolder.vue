@@ -9,7 +9,9 @@
 
     export default {
         name: 'JokeHolder',
-        props: ['joke'],
+        props: {
+            joke: Object
+        },
 
         components: {
             Joke
@@ -24,7 +26,7 @@
         methods: {
             async newRandomJoke () {
                 await axios.get('https://api.chucknorris.io/jokes/random')
-                .then(res => {console.log(res.data);this.cardJoke = res.data})
+                .then(res => this.cardJoke = res.data)
                 .catch(e => {
                     this.cardJoke.value = "No quotes found, try something else"
                     console.error(e)
@@ -39,9 +41,6 @@
             catch (e) {
                 console.error(e)
             }
-            finally {
-                console.log(this.cardJoke)
-           }
         },
     }
 </script>

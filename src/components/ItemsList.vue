@@ -17,7 +17,10 @@
 
     export default {
         name: 'ItemsList',
-        props: ['categories'],
+        props: {
+            categories: Array,
+            totalNow: Number
+        },
 
         components: {
             Dropdown,
