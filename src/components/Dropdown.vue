@@ -17,7 +17,7 @@
         },
 
         methods: {
-            handleChange (value) {
+            handleChange () {
                 this.$emit('update:option', this.selectedOptions)
             }
         },

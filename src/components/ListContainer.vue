@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <items-list @update:option="valueReceived" v-model="selectedOptions" :categories="categories"></items-list>
+        <items-list @update:option="valueReceived" @update:query="updateQuery" v-model="selectedOptions" :categories="categories"></items-list>
 
         <ul>
             <joke v-for="joke in allJokes.result" :key="joke.id" :joke="joke"></joke>
@@ -31,18 +31,13 @@
         },
 
         methods: {
-            valueReceived (category) {
-                this.filterJokes(category)
-            },
-
-            async fetchAllJokes () {
-                await axios.get('https://api.chucknorris.io/jokes/search?query=all')
+            async fetchAllJokes (q = 'all') {
+                await axios.get(`https://api.chucknorris.io/jokes/search?query=${q}`)
                 .then(res => this.allJokes = res.data)
                 .catch(e => {
                     this.allJokes = []
                     console.error(e)
                 })
-                .finally(() => console.log('allJokes', this.allJokes))
             },
 
             async loadCategories () {
@@ -62,7 +57,16 @@
                     const res = this.allJokes.result.filter(j => j.categories[0] === category)
                     this.allJokes = res
                 }
-            }
+            },
+
+            updateQuery (q) {
+                console.log(q)
+                this.fetchAllJokes(q)
+            },
+
+            valueReceived (category) {
+                this.filterJokes(category)
+            },
         },
 
         mounted () {
@@ -81,6 +85,6 @@
 .container {
     display: block;
     margin: 0 auto;
-    width: 400px;
+    width: 680px;
 }
 </style>>

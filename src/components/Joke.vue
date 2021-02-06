@@ -1,8 +1,16 @@
 <template>
-    <li class="card">
+    <li v-bind:class="['card', isBig ? 'special_card' : '']">
         <div class="card__category">
-            <img :src="joke.icon_url" :alt="joke.value">
-            <span v-if="joke.categories">{{ formatCategory(joke.categories[0]) }}</span>
+            <img
+                :src="joke.icon_url"
+                :alt="joke.value"
+                v-bind:class="{'special_card__image' : isBig}">
+            />
+            <span
+                v-if="joke.categories"
+                v-bind:class="{'special_card__span' : isBig}">
+                    {{ formatCategory(joke.categories[0]) }}
+            </span>
         </div>
 
         <figure>
@@ -19,7 +27,7 @@
 <script>
     export default {
         name: 'Joke',
-        props: ['joke'],
+        props: ['joke', 'isBig'],
 
         data: () => {
             return {
@@ -91,5 +99,14 @@
 }
 .flex {
     justify-content: space-between;
+}
+
+.special_card {
+    margin: 0 auto;
+    max-width: 400px;
+
+    .special_card__img {
+        display: none;
+    }
 }
 </style>

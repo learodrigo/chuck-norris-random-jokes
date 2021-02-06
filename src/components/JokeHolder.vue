@@ -1,7 +1,7 @@
 <template>
-    <header>
-        <joke :key="cardJoke.id" :joke="cardJoke"></joke>
-    </header>
+    <ul>
+        <joke :key="cardJoke.id" :joke="cardJoke" :isBig="true"></joke>
+    </ul>
 </template>
 
 <script>
@@ -24,11 +24,7 @@
         methods: {
             async newRandomJoke () {
                 await axios.get('https://api.chucknorris.io/jokes/random')
-                .then(res => this.cardJoke = {
-                    id: res.id,
-                    url: res.url,
-                    value: res.value
-                })
+                .then(res => {console.log(res.data);this.cardJoke = res.data})
                 .catch(e => {
                     this.cardJoke.value = "No quotes found, try something else"
                     console.error(e)
@@ -36,8 +32,16 @@
             },
         },
 
-        mounted() {
-            this.newRandomJoke()
+        mounted () {
+            try {
+                this.newRandomJoke()
+            }
+            catch (e) {
+                console.error(e)
+            }
+            finally {
+                console.log(this.cardJoke)
+           }
         },
     }
 </script>
