@@ -1,6 +1,5 @@
 <template>
     <div class="contact">
-        <nav-bar></nav-bar>
         <joke-holder></joke-holder>
         <h1>Hello World!</h1>
         <info></info>
@@ -8,17 +7,15 @@
 </template>
 
 <script>
-    import Info from './Info'
-    import JokeHolder from './JokeHolder'
-    import NavBar from './NavBar'
+    import Info from '../components/Info'
+    import JokeHolder from '../components/JokeHolder'
 
     export default {
         name: "Contact",
 
         components: {
-            JokeHolder,
-            NavBar,
-            Info
+            Info,
+            JokeHolder
         }
     }
 </script>
